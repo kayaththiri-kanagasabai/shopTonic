@@ -15,41 +15,41 @@ import { currentUser } from '@clerk/nextjs/server';
 
 
 
-const Header = async() => {
+const Header = async () => {
 
   const user = await currentUser();
-  console.log(user,"user");
+  console.log(user, "user");
 
   return (
-    <header className='bg-white py-5 border-b-black/20'>
-      <Container className='flex items-center justify-between max-w-full'>
-        {/* logo */}
-        <div className=' w-auto md:w-1/3 flex items-center gap-2.5 justify-start text-lightColor'>
-          <Mobile />
+     <header className="sticky top-0 z-50 py-5 bg-white/70 backdrop-blur-md">
+      <Container className="flex items-center justify-between text-lightColor">
+        <div className="w-auto md:w-1/3 flex items-center gap-2.5 justify-start md:gap-0">
+          <Mobile/>
           <Navlogo />
-
         </div>
         <Headermenu />
 
 
-        {/* NavButton */}
 
-        <div className='w-auto md:w-1/3 flex items-center justify-end gap-5'>
-          <Searchbar />
-          <CartIcon />
-          <Favouritebutton />
-          <ClerkLoaded>
-            <SignedIn>
-              <UserButton/>
-            </SignedIn>
-           {!user && <Signin /> } 
-          </ClerkLoaded>
-        </div>
 
-        {/* Navadmin */}
+      {/* NavButton */}
 
-      </Container>
-    </header>
+      <div className='w-auto md:w-1/3 flex items-center justify-end gap-5'>
+        <Searchbar />
+        <CartIcon />
+        <Favouritebutton />
+        <ClerkLoaded>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          {!user && <Signin />}
+        </ClerkLoaded>
+      </div>
+
+      {/* Navadmin */}
+
+    </Container>
+    </header >
   )
 }
 
